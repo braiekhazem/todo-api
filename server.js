@@ -45,6 +45,13 @@ app.post("/todos", (req, res) => {
 app.get("/todos", (req, res) => {
   let { page = 1, limit = 10 } = req.query;
   const todos = readTodos();
+
+  const statusCount = todos?.reduce((acc, todo) => {
+    const status = todo.status.toLowerCase();
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, {});
+
   limit = limit > 50 ? 50 : limit;
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + parseInt(limit);
@@ -55,6 +62,7 @@ app.get("/todos", (req, res) => {
     page: parseInt(page),
     limit: parseInt(limit),
     todos: paginatedTodos,
+    statusCount,
   });
 });
 
