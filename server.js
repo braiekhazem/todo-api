@@ -37,7 +37,7 @@ app.post("/todos", (req, res) => {
   }
 
   const todos = readTodos();
-  const newTodo = { id: Date.now(), name, status };
+  const newTodo = { id: Date.now(), name, status, color };
   todos.push(newTodo);
   writeTodos(todos);
 
