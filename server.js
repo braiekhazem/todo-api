@@ -2,12 +2,14 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3001;
 const todosFilePath = path.join(__dirname, "todos.json");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const readTodos = () => {
   if (!fs.existsSync(todosFilePath)) {
@@ -35,7 +37,7 @@ app.post("/todos", (req, res) => {
   }
 
   const todos = readTodos();
-  const newTodo = { id: Date.now(), name, status };
+  const newTodo = { id: Date.now(), name, status, color };
   todos.push(newTodo);
   writeTodos(todos);
 
