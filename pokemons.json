@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "name": "Charizard",
+    "type": ["Fire", "Flying"],
+    "color": "#E40",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/1aa6febd88204d4eb7ff8592ed65a6c0_1_v8eoeb.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/image_10_n79xx5.png",
+    "height": 0.8,
+    "weight": 6.9,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 45
+      },
+      {
+        "name": "Attack",
+        "value": 49
+      },
+      {
+        "name": "Defense",
+        "value": 49
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 65
+      },
+      {
+        "name": "Sp. Def",
+        "value": 65
+      },
+      {
+        "name": "Speed",
+        "value": 45
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Bulbasaur",
+    "type": ["Grass", "Poison"],
+    "color": "#76DD8C",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678515/bulbasaur_by_mutationfoxy_ddim750-fullview_1_jjiuet.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736679169/image_11_otr0qj.png",
+    "height": 1.0,
+    "weight": 13.0,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 60
+      },
+      {
+        "name": "Attack",
+        "value": 62
+      },
+      {
+        "name": "Defense",
+        "value": 63
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 80
+      },
+      {
+        "name": "Sp. Def",
+        "value": 80
+      },
+      {
+        "name": "Speed",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Blastoise",
+    "type": ["Water"],
+    "color": "#69D4FF",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/dewjemg-bd30c3ed-046a-487a-bf0c-17271409fb1d_1_qv51gf.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/2000a252144f2b46ea2b1cdcd271d259_1_vzyri8.png",
+    "height": 1.0,
+    "weight": 13.0,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 60
+      },
+      {
+        "name": "Attack",
+        "value": 62
+      },
+      {
+        "name": "Defense",
+        "value": 63
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 80
+      },
+      {
+        "name": "Sp. Def",
+        "value": 80
+      },
+      {
+        "name": "Speed",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Aromatisse",
+    "type": ["Fairy"],
+    "color": "#FF76FD",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/image_19_c32y2i.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/rb_21544_1_b4xrsx.png",
+    "height": 1.0,
+    "weight": 13.0,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 60
+      },
+      {
+        "name": "Attack",
+        "value": 62
+      },
+      {
+        "name": "Defense",
+        "value": 63
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 80
+      },
+      {
+        "name": "Sp. Def",
+        "value": 80
+      },
+      {
+        "name": "Speed",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Pikachu",
+    "type": ["Electric"],
+    "color": "#FFE34C",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/image_17_zbfsse.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/freepik__background__36145_1_kmz7l4.png",
+    "height": 1.0,
+    "weight": 13.0,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 60
+      },
+      {
+        "name": "Attack",
+        "value": 62
+      },
+      {
+        "name": "Defense",
+        "value": 63
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 80
+      },
+      {
+        "name": "Sp. Def",
+        "value": 80
+      },
+      {
+        "name": "Speed",
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Mareanie",
+    "type": ["Poison", "Water"],
+    "color": "#CE88EE",
+    "image": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/image_20_htvdzd.png",
+    "overlayImage": "https://res.cloudinary.com/dj6kxvxqb/image/upload/v1736678514/freepik__background__1974_1_yjeedf.png",
+    "height": 1.0,
+    "weight": 13.0,
+    "stats": [
+      {
+        "name": "HP",
+        "value": 60
+      },
+      {
+        "name": "Attack",
+        "value": 62
+      },
+      {
+        "name": "Defense",
+        "value": 63
+      },
+      {
+        "name": "Sp. Atk",
+        "value": 80
+      },
+      {
+        "name": "Sp. Def",
+        "value": 80
+      },
+      {
+        "name": "Speed",
+        "value": 60
+      }
+    ]
+  }
+]

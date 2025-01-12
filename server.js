@@ -1,116 +1,42 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-const PORT = 3001;
-const todosFilePath = path.join(__dirname, "todos.json");
+const PORT = 3000;
 
-app.use(bodyParser.json());
+const pokemonsFilePath = path.join(__dirname, "pokemons.json");
+const pokemons = JSON.parse(fs.readFileSync(pokemonsFilePath, "utf-8"));
 
-const readTodos = () => {
-  if (!fs.existsSync(todosFilePath)) {
-    fs.writeFileSync(todosFilePath, JSON.stringify([]));
-  }
-  return JSON.parse(fs.readFileSync(todosFilePath, "utf8"));
-};
+app.use(express.json());
 
-const writeTodos = (todos) => {
-  fs.writeFileSync(todosFilePath, JSON.stringify(todos, null, 2));
-};
+//add cors middleware
+app.use(cors("*"));
 
-const statuses = ["open", "in progress", "completed", "archived", "cancelled"];
+app.get("/pokemons", (req, res) => {
+  const { type, search } = req.query;
 
-app.post("/todos", (req, res) => {
-  const { name, status, color } = req.body;
-  if (!name || !status || !color) {
-    return res.status(400).json({
-      error: "Invalid request. Please provide name, status and color",
-    });
+  let filteredPokemons = pokemons;
+
+  if (type) {
+    filteredPokemons =
+      type === "All"
+        ? filteredPokemons
+        : filteredPokemons.filter((pokemon) =>
+            pokemon.type.some((t) => t.toLowerCase() === type.toLowerCase())
+          );
   }
 
-  if (statuses.indexOf(status.toLowerCase()) === -1) {
-    return res.status(400).json({ error: "Invalid status" });
+  if (search) {
+    filteredPokemons = filteredPokemons.filter(
+      (pokemon) =>
+        pokemon.name.toLowerCase().includes(search.toLowerCase()) ||
+        String(pokemon.id).includes(search)
+    );
   }
 
-  const todos = readTodos();
-  const newTodo = { id: Date.now(), name, status };
-  todos.push(newTodo);
-  writeTodos(todos);
-
-  res.status(201).json(newTodo);
-});
-
-app.get("/todos", (req, res) => {
-  let { page = 1, limit = 10 } = req.query;
-  const todos = readTodos();
-
-  const statusCount = todos?.reduce((acc, todo) => {
-    const status = todo.status.toLowerCase();
-    acc[status] = (acc[status] || 0) + 1;
-    return acc;
-  }, {});
-
-  limit = limit > 50 ? 50 : limit;
-  const startIndex = (page - 1) * limit;
-  const endIndex = startIndex + parseInt(limit);
-  const paginatedTodos = todos.slice(startIndex, endIndex);
-
-  res.json({
-    total: todos.length,
-    page: parseInt(page),
-    limit: parseInt(limit),
-    todos: paginatedTodos,
-    statusCount,
-  });
-});
-
-app.get("/todos/:id", (req, res) => {
-  const todoId = parseInt(req.params.id);
-  const todos = readTodos();
-  const todo = todos.find((t) => t.id === todoId);
-
-  if (!todo) {
-    return res.status(404).json({ error: "Todo not found" });
-  }
-
-  res.json(todo);
-});
-
-app.put("/todos/:id", (req, res) => {
-  const todoId = parseInt(req.params.id);
-  const { name, status, color } = req.body;
-  const todos = readTodos();
-  const todoIndex = todos.findIndex((t) => t.id === todoId);
-
-  if (todoIndex === -1) {
-    return res.status(404).json({ error: "Todo not found" });
-  }
-
-  if (status && statuses.indexOf(status.toLowerCase()) === -1) {
-    return res.status(400).json({ error: "Invalid status" });
-  }
-
-  if (name) todos[todoIndex].name = name;
-  if (status) todos[todoIndex].status = status;
-  if (color) todos[todoIndex].color = color;
-
-  writeTodos(todos);
-  res.json(todos[todoIndex]);
-});
-
-app.delete("/todos/:id", (req, res) => {
-  const todoId = parseInt(req.params.id);
-  const todos = readTodos();
-  const newTodos = todos.filter((t) => t.id !== todoId);
-
-  if (todos.length === newTodos.length) {
-    return res.status(404).json({ error: "Todo not found" });
-  }
-
-  writeTodos(newTodos);
-  res.json({ message: "Todo deleted successfully" });
+  res.json(filteredPokemons);
 });
 
 app.listen(PORT, () => {
